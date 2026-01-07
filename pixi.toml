@@ -1,0 +1,16 @@
+[workspace]
+channels = ["conda-forge"]
+name = "Rusty-MENAP"
+platforms = ["linux-64"]
+version = "0.1.0"
+
+[tasks]
+build = "cargo build"
+start = "cargo run"
+test = "cargo test"
+clean = "cargo clean"
+fmt = "cargo fmt"
+lint = { cmd = "cargo clippy", depends-on = ["fmt"] }
+
+[dependencies]
+rust = ">=1.92.0,<1.93"
