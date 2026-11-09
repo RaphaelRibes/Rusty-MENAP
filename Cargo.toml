@@ -1,6 +1,13 @@
 [package]
-name = "Rusty-MENAP"
-version = "0.1.0"
+name = "rusty-menap"
+version = "0.2.0"
 edition = "2024"
+rust-version = "1.88"
+description = "RMT-based threshold selection for molecular ecological networks (Deng et al. 2012, MENAP)"
+license = "GPL-3.0-or-later"
+readme = "README.md"
+keywords = ["network", "random-matrix-theory", "microbiome", "bioinformatics"]
+categories = ["science", "command-line-utilities"]
 
 [dependencies]
+nalgebra = "0.34.1"
