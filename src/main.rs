@@ -1,7 +1,7 @@
 //! Command-line entry point for Rusty-MENAP.
 
 use std::fmt::Write as _;
-use std::path::{Path, PathBuf};
+use std::path::PathBuf;
 use std::process::ExitCode;
 
 use rusty_menap::{
@@ -359,15 +359,15 @@ fn write_outputs(
     );
     std::fs::write(args.out.join("summary.json"), json)?;
 
-    println!("\nwrote {}", listing(&args.out));
+    let mut written = vec![
+        format!("{}/network.tsv", args.out.display()),
+        format!("{}/summary.json", args.out.display()),
+    ];
+    if args.curve && mode == "rmt" {
+        written.push(format!("{}/scan_curve.tsv", args.out.display()));
+    }
+    println!("\nwrote {}", written.join(", "));
     Ok(())
-}
-
-fn listing(dir: &Path) -> String {
-    format!(
-        "{0}/network.tsv, {0}/summary.json, {0}/scan_curve.tsv",
-        dir.display()
-    )
 }
 
 fn json_escape(s: &str) -> String {
