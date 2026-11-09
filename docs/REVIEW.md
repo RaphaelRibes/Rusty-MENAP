@@ -74,7 +74,9 @@ fit       chi2 = 22.76, df = 15, p = 0.0894 > alpha = 0.01
 The edge count now equals the number of lines in `out/network.tsv` (1713), the
 node count equals the connected OTUs at that threshold, and the reported
 threshold matches an independent NumPy reimplementation of the corrected
-procedure (`0.86`, 695 nodes, 1713 edges).
+procedure (`0.86`, 695 nodes, 1713 edges). The second shipped table,
+`data/warming.txt` (976 × 14), accepts at the same 0.86 with 671 nodes, 1347
+edges and p = 0.320.
 
 Reproduction of finding 5 on the corrected build: permuting every OTU's values
 across samples yields `threshold 0.83`, `p = 0.0113` — still accepted at

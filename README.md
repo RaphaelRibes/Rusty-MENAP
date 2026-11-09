@@ -59,6 +59,15 @@ spectrum, malformed input), `2` usage error.
 - `scan_curve.tsv` — one row per evaluated threshold: nodes, edges, χ², df, p,
   decision. Useful for seeing whether the transition is clean or marginal.
 
+## Results on the shipped tables
+
+| table | threshold | nodes | edges | mean degree | χ² | df | p |
+|---|---|---|---|---|---|---|---|
+| `data/Control.txt` | 0.86 | 695 | 1713 | 4.93 | 22.76 | 15 | 0.089 |
+| `data/warming.txt` | 0.86 | 671 | 1347 | 4.01 | 15.90 | 14 | 0.320 |
+
+Both accept at α = 0.01; the warming table is the stronger fit.
+
 ## Method, and where it is a choice rather than the paper
 
 Steps (a)–(h) of the paper's Methods are implemented as written: row-wise
@@ -99,9 +108,9 @@ random graphs, module stability) before it is interpreted as signal. The
 reference pipeline itself abandons RMT for a fixed threshold when the test does
 not accept on its data.
 
-Runtime on the shipped control table (987 OTUs × 14 samples): about 8 s when
-the coarse scan brackets the transition, about 35 s when the full fine sweep is
-needed. Memory is O(n²) f64 (≈8 MB at n = 1000, ≈800 MB at n = 10 000).
+Runtime on the shipped tables (987 and 976 OTUs × 14 samples): about 30 s
+each, because neither brackets the transition on the coarse grid and the full
+fine sweep runs. Memory is O(n²) f64 (≈8 MB at n = 1000, ≈800 MB at n = 10 000).
 
 ## Example data
 
